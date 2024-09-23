@@ -77,9 +77,9 @@ config.disable_default_key_bindings = true
 config.leader = { key = "q", mods = "ALT", timeout_milliseconds = 2000 }
 config.keys = {
     -- save/load/reload window layout
-    { key = "s", mods = "LEADER", action = act{EmitEvent = "save_session"}, },
-    { key = "L", mods = "LEADER", action = act{EmitEvent = "load_session"}, },
-    { key = "a", mods = "LEADER", action = act{EmitEvent = "restore_session"}, },
+    { key = "S", mods = "LEADER", action = act{EmitEvent = "save_state"}, },
+    { key = "L", mods = "LEADER", action = act{EmitEvent = "load_state"}, },
+    { key = "R", mods = "LEADER", action = act{EmitEvent = "restore_state"}, },
     { key = "n", mods = "LEADER", action = act.SpawnTab 'CurrentPaneDomain', },
     { key = "N", mods = "LEADER", action = act.SpawnWindow, },
     { key = "x", mods = "LEADER", action = act.CloseCurrentPane { confirm = false }, },
