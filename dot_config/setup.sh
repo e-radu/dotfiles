@@ -1,19 +1,35 @@
+sudo apt-get update
 sudo apt-get install nala -y
-sudo nala update
 sudo nala upgrade -y
-sudo nala install git tree build-essential checkinstall zlib1g-dev libssl-dev
-sudo nala install wget gpg unzip gcc make ripgrep xclip -y
-sudo nala install cmake -y
+sudo nala install zsh -y
+sudo nala install git tree build-essential checkinstall zlib1g-dev libssl-dev -y
+sudo nala install wget gpg unzip gcc make ripgrep xclip fd-find -y
+# sudo nala install cmake -y
 
+function check_and_install_tool {
+$1 --version
+if [ ! $? -eq 0 ]; then
+echo "Installing $1 ..."
+cargo install --locked $1
+else
+echo "--> $1 already installed."
+fi
+}
+
+nvim --version
+if [ ! $? -eq 0 ]; then
 echo "Installing neovim"
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
+rm nvim-linux64.tar.gz
 
 echo "Installing neovim plugins"
 git clone https://github.com/e-radu/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+fi
 
-if [ ! -d "~/.rustup"]; then
+cargo --version
+if  [ ! $? -eq 0 ]; then
 echo "Installing Rust Cargo"
 curl https://sh.rustup.rs -sSf | sh
 else
@@ -28,27 +44,45 @@ else
 echo "Starship already installed"
 fi
 
-echo "Reloading ZSH config"
-source ~/.config/.zshrc
+lazygit --version
+if [ ! $? -eq 0 ]; then
+echo "Installing lazygit"
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
+rm lazygit.tar.gz
+rm lazygit
+else
+echo "--> lazygit already installed"
+fi
 
-echo "Installing eza"
-cargo install --locked eza
+cargoTools=("eza" "bat" "zoxide" "zellij")
 
-echo "Installing delta"
-cargo install --locked git-delta
+for tool in "${cargoTools[@]}"; do
+check_and_install_tool $tool
+done
 
-echo "Installing bat"
-cargo install --locked bat
+# delta --version
+# if [ ! $? -eq 0 ]; then
+# echo "Installing delta"
+# cargo install --locked git-delta
+# else
+# echo "delta already installed"
+# fi
 
+fzf --version
+if [ ! $? -eq 0 ]; then
 echo "Installing FZF"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+else
+echo "--> fzf already installed"
+fi
 
-echo "Installing fd-find"
-sudo nala install fd-find -y
+chsh -s $(which zsh)
+zsh
 
-echo "Installing zoxide"
-cargo install --locked zoxide
+echo "Reloading ZSH config"
+source ~/.zshrc
 
-echo "Installing Zellij"
-cargo install --locked zellij
