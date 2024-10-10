@@ -3,7 +3,7 @@ sudo apt-get install nala -y
 sudo nala upgrade -y
 sudo nala install zsh -y
 sudo nala install git tree build-essential checkinstall zlib1g-dev libssl-dev -y
-sudo nala install wget gpg unzip gcc make ripgrep xclip fd-find -y
+sudo nala install wget gpg unzip gcc make ripgrep xclip fd-find tmux -y
 # sudo nala install cmake -y
 
 function check_and_install_tool {
