@@ -1,0 +1,4 @@
+customCommands:
+  - key: '<c-l>'
+    context: 'status'
+    command: "git config --local user.name 'e-radu' && git config --local user.email 'ene.m.radu@gmail.com'"
