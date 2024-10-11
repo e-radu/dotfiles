@@ -22,7 +22,7 @@ local function retrieve_workspace_data(window)
 	for _, tab in ipairs(window:mux_window():tabs()) do
 		local tab_data = {
 			tab_id = tostring(tab:tab_id()),
-			tab_tile = tostring(tab:get_title()),
+			tab_title = tostring(tab:get_title()),
 			panes = {},
 		}
 
