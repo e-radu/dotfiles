@@ -28,12 +28,12 @@ end)
 wezterm.on("gui-startup", function(cmd)
 	local tab, pane, window = mux.spawn_window(cmd or {})
 	window:gui_window():maximize()
-	sm.restore_state(window)
+	sm.restore_state(window:gui_window())
 end)
 
 config.color_scheme = "Catppuccin Macchiato"
-config.font = wezterm.font("JetBrains Mono", { weight = "Bold" })
-config.font_size = 12
+config.font = wezterm.font("JetBrains Mono", { weight = "Regular" })
+config.font_size = 14
 config.use_dead_keys = false
 config.scrollback_lines = 5000
 config.automatically_reload_config = true
