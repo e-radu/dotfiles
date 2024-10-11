@@ -131,7 +131,7 @@ local function recreate_workspace(window, workspace_data)
 		-- Activate the new tab before creating panes
 		new_tab:activate()
 		-- Restore tab tiles
-		new_tab.set_title(tab_data.tab_title)
+		new_tab:set_title(tab_data.tab_title)
 
 		-- Recreate panes within this tab
 		for j, pane_data in ipairs(tab_data.panes) do
@@ -166,6 +166,8 @@ local function recreate_workspace(window, workspace_data)
 					new_pane:send_text(pane_data.tty .. "\n")
 				end
 			end
+			--- Clear panes on restore
+			new_pane:send_text("clear\r")
 		end
 	end
 
