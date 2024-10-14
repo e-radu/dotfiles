@@ -4,6 +4,7 @@ sudo nala upgrade -y
 sudo nala install zsh -y
 sudo nala install git tree build-essential checkinstall zlib1g-dev libssl-dev -y
 sudo nala install wget gpg unzip gcc make ripgrep xclip fd-find tmux -y
+fc-cache -f -v
 # sudo nala install cmake -y
 
 wezterm --version
