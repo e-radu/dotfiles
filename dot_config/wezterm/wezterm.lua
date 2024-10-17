@@ -2,7 +2,7 @@
 local wezterm = require("wezterm")
 local mux = wezterm.mux
 local act = wezterm.action
-
+local os = wezterm.target_triple
 -- This table will hold the configuration.
 local config = {}
 
@@ -12,6 +12,9 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+if os == "x86_64-pc-windows-msvc" then
+	config.default_prog = { "pwsh" }
+end
 -- Save and reload the configuration without restarting wezterm
 local sm = require("wezterm-session-manager/session-manager")
 wezterm.on("save_state", function(window, pane)
