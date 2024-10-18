@@ -59,7 +59,6 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# EZA Aliases
 alias ls='eza -al --color=always --group-directories-first'
 alias la='eza -a --color=always --group-directories-first'
 alias ll='eza -l --color=always --group-directories-first'
@@ -74,6 +73,10 @@ alias df='df -h'
 alias free='free -m'
 alias grep='grep --color=auto'
 alias cat='bat'
+alias lg='lazygit'
+
+# Load local aliasses
+[ -f ~/.alias.zsh ] && source ~/.alias.zsh
 
 # Shell integrations
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
