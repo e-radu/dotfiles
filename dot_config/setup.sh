@@ -3,10 +3,11 @@ sudo apt-get install nala -y
 sudo nala upgrade -y
 sudo nala install zsh -y
 sudo nala install git tree build-essential checkinstall zlib1g-dev libssl-dev -y
-sudo nala install wget gpg unzip gcc make ripgrep xclip fd-find tmux -y
+sudo nala install wget gpg unzip gcc make tmux -y
 fc-cache -f -v
 # sudo nala install cmake -y
-
+# install dependencies for yazi
+sudo nala install ffmpegthumbnailer jq poppler-utils fd-find ripgrep xclip -y
 wezterm --version
 if [ ! $? -eq 0 ]; then
 curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
@@ -80,19 +81,19 @@ else
 echo "--> lazygit already installed"
 fi
 
-cargoTools=("eza" "bat" "zoxide" "zellij")
+cargoTools=("eza" "bat" "zoxide" "zellij" "yazi-fm" "yazi-cli")
 
 for tool in "${cargoTools[@]}"; do
 check_and_install_tool $tool
 done
 
-# delta --version
-# if [ ! $? -eq 0 ]; then
-# echo "Installing delta"
-# cargo install --locked git-delta
-# else
-# echo "delta already installed"
-# fi
+delta --version
+if [ ! $? -eq 0 ]; then
+echo "Installing delta"
+cargo install --locked git-delta
+else
+echo "--> delta already installed"
+fi
 
 fzf --version
 if [ ! $? -eq 0 ]; then
