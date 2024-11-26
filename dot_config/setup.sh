@@ -3,7 +3,8 @@ sudo apt-get install nala -y
 sudo nala upgrade -y
 sudo nala install zsh -y
 sudo nala install git tree build-essential checkinstall zlib1g-dev libssl-dev -y
-sudo nala install wget gpg unzip gcc make tmux -y
+sudo nala install wget gpg unzip gcc make -y
+sudo nala install yacc libncurses5-dev libncursesw5-dev libevent-dev -y
 fc-cache -f -v
 # sudo nala install cmake -y
 # install dependencies for yazi
@@ -26,6 +27,21 @@ if [ ! $? -eq 0 ]; then
     sudo nala install brave-browser -y
 else
     echo "Brave browser already installed"
+fi
+
+tmux -V
+if [ ! $? -eq 0 ]; then
+    current_path=$(pwd)
+    mkdir -p ~/tmux_temp
+    cd ~/tmux_temp
+    wget https://github.com/tmux/tmux/releases/download/3.5/tmux-3.5.tar.gz
+    tar -zxf tmux-3.5.tar.gz
+    cd tmux-3.5
+    ./configure && make
+    sudo make install
+    cd $current_path
+else
+    echo "Tmux already installed"
 fi
 
 function check_and_install_tool {
