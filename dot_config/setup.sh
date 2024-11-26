@@ -4,11 +4,13 @@ sudo nala upgrade -y
 sudo nala install zsh -y
 sudo nala install git tree build-essential checkinstall zlib1g-dev libssl-dev -y
 sudo nala install wget gpg unzip gcc make -y
+# install dependencies for tmux
 sudo nala install yacc libncurses5-dev libncursesw5-dev libevent-dev -y
+# load custom fonts
 fc-cache -f -v
-# sudo nala install cmake -y
 # install dependencies for yazi
 sudo nala install ffmpegthumbnailer jq poppler-utils fd-find ripgrep xclip -y
+
 wezterm --version
 if [ ! $? -eq 0 ]; then
     curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
@@ -40,6 +42,7 @@ if [ ! $? -eq 0 ]; then
     ./configure && make
     sudo make install
     cd $current_path
+    rm -rf ~/tmux_temp
 else
     echo "Tmux already installed"
 fi
