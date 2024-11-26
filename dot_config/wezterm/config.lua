@@ -16,6 +16,7 @@ config.automatically_reload_config = true
 config.default_cursor_style = "SteadyBar"
 
 -- window config
+config.enable_wayland = false
 config.window_close_confirmation = "NeverPrompt"
 -- config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
@@ -40,7 +41,7 @@ config.status_update_interval = 1000
 --- config.tab_and_split_indices_are_zero_based = true
 
 -- theme
-config.color_scheme = "Catppuccin Macchiato"
+config.color_scheme = "Tokyo Night Storm"
 config.font = wezterm.font("JetBrains Mono NF", { weight = "Regular" })
 config.font_size = 14
 config.background = {
