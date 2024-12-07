@@ -32,7 +32,7 @@ config.inactive_pane_hsb = {
 }
 
 -- tab config
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_max_width = 60
@@ -149,6 +149,10 @@ config.keys = {
 			end),
 		}),
 	},
+	-- Toggle Fullscreen
+	{ key = "F", mods = "LEADER", action = act.ToggleFullScreen },
+	-- CTRL-SHIFT-l activates the debug overlay
+	{ key = "D", mods = "LEADER", action = act.ShowDebugOverlay },
 	-- toggle pane zoom state
 	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 	-- active move_tab key table
