@@ -24,6 +24,7 @@ if [ ! $? -eq 0 ]; then
     sudo make install
     cd $current_path
     rm -rf ~/tmux_temp
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 else
     echo "Tmux already installed"
 fi
