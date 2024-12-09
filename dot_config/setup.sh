@@ -79,20 +79,6 @@ else
     echo "--> lazygit already installed"
 fi
 
-cargoTools=("eza" "bat" "zoxide" "zellij" "yazi-fm" "yazi-cli" "tlrc")
-
-for tool in "${cargoTools[@]}"; do
-    check_and_install_tool $tool
-done
-
-delta --version
-if [ ! $? -eq 0 ]; then
-    echo "Installing delta"
-    cargo install --locked git-delta
-else
-    echo "--> delta already installed"
-fi
-
 fzf --version
 if [ ! $? -eq 0 ]; then
     echo "Installing FZF"
@@ -107,3 +93,17 @@ zsh
 
 echo "Reloading ZSH config"
 source ~/.zshrc
+
+cargoTools=("eza" "bat" "zoxide" "yazi-fm" "yazi-cli" "tlrc")
+
+for tool in "${cargoTools[@]}"; do
+    check_and_install_tool $tool
+done
+
+delta --version
+if [ ! $? -eq 0 ]; then
+    echo "Installing delta"
+    cargo install --locked git-delta
+else
+    echo "--> delta already installed"
+fi
