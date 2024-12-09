@@ -10,6 +10,7 @@ sudo nala install yacc libncurses5-dev libncursesw5-dev libevent-dev -y
 fc-cache -f -v
 # install dependencies for yazi
 sudo nala install ffmpegthumbnailer jq poppler-utils fd-find ripgrep xclip -y
+sudo ln --symbolic $(which fdfind) /usr/local/bin/fd
 
 wezterm --version
 if [ ! $? -eq 0 ]; then
