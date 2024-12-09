@@ -98,7 +98,7 @@ else
     echo "--> lazygit already installed"
 fi
 
-cargoTools=("eza" "bat" "zoxide" "zellij" "yazi-fm" "yazi-cli")
+cargoTools=("eza" "bat" "zoxide" "zellij" "yazi-fm" "yazi-cli" "tlrc")
 
 for tool in "${cargoTools[@]}"; do
     check_and_install_tool $tool
