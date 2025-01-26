@@ -74,6 +74,7 @@ alias free='free -m'
 alias grep='grep --color=auto'
 alias cat='bat'
 alias lg='lazygit'
+alias xc='xclip -selection clipboard'
 
 # Load local aliasses
 [ -f ~/.alias.zsh ] && source ~/.alias.zsh
