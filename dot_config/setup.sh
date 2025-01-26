@@ -12,6 +12,8 @@ fc-cache -f -v
 sudo nala install ffmpegthumbnailer jq poppler-utils fd-find ripgrep xclip -y
 sudo ln --symbolic $(which fdfind) /usr/local/bin/fd
 
+# Remove previous tmux installation
+sudo nala remove tmux
 tmux -V
 if [ ! $? -eq 0 ]; then
     current_path=$(pwd)
@@ -28,16 +30,6 @@ if [ ! $? -eq 0 ]; then
 else
     echo "Tmux already installed"
 fi
-
-function check_and_install_tool {
-    $1 --version
-    if [ ! $? -eq 0 ]; then
-        echo "Installing $1 ..."
-        cargo install --locked $1
-    else
-        echo "--> $1 already installed."
-    fi
-}
 
 nvim --version
 if [ ! $? -eq 0 ]; then
@@ -94,27 +86,3 @@ zsh
 
 echo "Reloading ZSH config"
 source ~/.zshrc
-
-node -v
-if [ ! $? -eq 0 ]; then
-    echo "Installing NodeJS"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-    source ~/.zshrc
-    nvm install 22
-else
-    echo "NodeJS already installed"
-fi
-
-cargoTools=("eza" "bat" "zoxide" "yazi-fm" "yazi-cli" "tlrc")
-
-for tool in "${cargoTools[@]}"; do
-    check_and_install_tool $tool
-done
-
-delta --version
-if [ ! $? -eq 0 ]; then
-    echo "Installing delta"
-    cargo install --locked git-delta
-else
-    echo "--> delta already installed"
-fi
