@@ -15,6 +15,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light loiccoyle/zsh-github-copilot
 
 # Add in snippets
 zinit snippet OMZP::git
@@ -30,6 +31,8 @@ zinit cdreplay -q
 #bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^[\' zsh_gh_copilot_suggest
+bindkey '^[|' zsh_gh_copilot_explain
 #bindkey '^[w' kill-region
 
 # History
