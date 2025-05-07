@@ -89,7 +89,7 @@ eval "$(starship init zsh)"
 . "/home/rene/.cargo/env"
 
 # Add neovim to path
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # Add chezmoi to path
 export PATH="$PATH:~/.local/bin"
@@ -99,3 +99,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export EDITOR=nvim
+# Include custom scripts which might be specifc to a machine 
+[ -f ~/.custom.sh ] && source ~/.custom.sh
