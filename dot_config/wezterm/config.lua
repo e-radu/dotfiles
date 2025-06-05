@@ -150,7 +150,7 @@ config.keys = {
 		}),
 	},
 	-- Toggle Fullscreen
-	{ key = "F", mods = "LEADER", action = act.ToggleFullScreen },
+	{ key = "Z", mods = "LEADER", action = act.ToggleFullScreen },
 	-- CTRL-SHIFT-l activates the debug overlay
 	{ key = "D", mods = "LEADER", action = act.ShowDebugOverlay },
 	-- toggle pane zoom state
