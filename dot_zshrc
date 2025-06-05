@@ -84,9 +84,16 @@ alias xc='xclip -selection clipboard'
 
 # Shell integrations
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(zoxide init --cmd cd zsh)"
+
+# Check if zoxide is installed and initialize it
+if ! command -v zoxide &> /dev/null; then
+   echo "zoxide not found. Run 'source ~/.config/tools.sh' to install it."
+else
+   eval "$(zoxide init --cmd cd zsh)"
+fi
+
 eval "$(starship init zsh)"
-. "/home/rene/.cargo/env"
+. "/home/$USER/.cargo/env"
 
 # Add neovim to path
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
@@ -99,5 +106,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export EDITOR=nvim
-# Include custom scripts which might be specifc to a machine 
+# Include custom scripts which might be specifc to a machine
 [ -f ~/.custom.sh ] && source ~/.custom.sh
