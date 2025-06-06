@@ -1,0 +1,195 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "capslock e",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "capslock ]",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "capslock [",
+        "command": "workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "key": "capslock t",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "capslock shift+t",
+        "command": "workbench.action.createTerminalEditorSide",
+        "when": "terminalProcessSupported"
+    },
+    {
+        "key": "capslock d",
+        "command": "workbench.actions.view.problems",
+        "when": "workbench.panel.markers.view.active"
+    },
+    {
+        "key": "capslock f",
+        "command": "actions.find",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "capslock z",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus || workbench.panel.output.active "
+    },
+    {
+        "key": "capslock c",
+        "command": "workbench.action.closePanel"
+    },
+    {
+        "key": "capslock q",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "capslock shift+q",
+        "command": "workbench.action.closeAllEditors"
+    },
+    {
+        "key": "capslock z",
+        "command": "workbench.action.toggleMaximizeEditorGroup",
+        "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
+    },
+    {
+        "key": "capslock \\",
+        "command": "workbench.files.action.collapseExplorerFolders",
+        "when": "explorerViewletFocus"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "alt+h",
+        "when": "editorTextFocus && neovim.mode != 'insert'",
+        "args": "<A-h>",
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "alt+j",
+        "when": "editorTextFocus && neovim.mode != 'insert'",
+        "args": "<A-j>",
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "alt+k",
+        "when": "editorTextFocus && neovim.mode != 'insert'",
+        "args": "<A-k>",
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "alt+l",
+        "when": "editorTextFocus && neovim.mode != 'insert'",
+        "args": "<A->",
+    },
+    {
+        "key": "capslock s",
+        "command": "workbench.action.quickTextSearch"
+    },
+    {
+        "key": "capslock r",
+        "command": "editor.action.startFindReplaceAction",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "capslock shift+r",
+        "command": "workbench.action.replaceInFiles"
+    },
+    {
+        "key": "capslock shift+f",
+        "command": "workbench.action.findInFiles"
+    },
+    {
+        "key": "capslock f",
+        "command": "filesExplorer.findInFolder",
+        "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus"
+    },
+    {
+        "key": "ctrl+shift+c",
+        "command": "editor.action.clipboardCopyAction"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "editor.action.clipboardPasteAction"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "editor.action.clipboardCutAction"
+    },
+    {
+        "key": "capslock ,",
+        "command": "workbench.action.focusLeftGroup",
+        "when": "neovim.mode != insert"
+    },
+    {
+        "key": "capslock .",
+        "command": "workbench.action.focusRightGroup",
+        "when": "neovim.mode != 'insert'"
+    },
+    {
+        "key": "capslock n",
+        "command": "editor.action.nextMatchFindAction",
+        "when": "editorFocus && findInputFocussed"
+    },
+    {
+        "key": "capslock n",
+        "command": "editor.action.nextMatchFindAction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "capslock shift+n",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "editorFocus && findInputFocussed"
+    },
+    {
+        "key": "capslock shift+n",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "capslock v",
+        "command": "workbench.action.splitEditorRight"
+    },
+    {
+        "key": "capslock b",
+        "command": "cmake.build",
+        "when": "cmake:enableFullFeatureSet && !cmake:hideBuildCommand"
+    },
+    {
+        "key": "capslock o",
+        "command": "workbench.action.output.toggleOutput",
+        "when": "workbench.panel.output.active"
+    },
+    {
+        "key": "capslock a",
+        "command": "inlineChat.start",
+        "when": "editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+    },
+    {
+        "key": "capslock a",
+        "command": "inlineChat2.start",
+        "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && !inlineChatHasSession"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "ctrl+alt+-",
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "-workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    }
+]
