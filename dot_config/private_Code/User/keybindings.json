@@ -1,62 +1,62 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "capslock e",
+        "key": "` e",
         "command": "workbench.view.explorer",
         "when": "viewContainer.workbench.view.explorer.enabled"
     },
     {
-        "key": "capslock ]",
+        "key": "` ]",
         "command": "workbench.action.toggleSidebarVisibility"
     },
     {
-        "key": "capslock [",
+        "key": "` [",
         "command": "workbench.action.toggleAuxiliaryBar"
     },
     {
-        "key": "capslock t",
+        "key": "` t",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
     },
     {
-        "key": "capslock shift+t",
+        "key": "` shift+t",
         "command": "workbench.action.createTerminalEditorSide",
         "when": "terminalProcessSupported"
     },
     {
-        "key": "capslock d",
+        "key": "` d",
         "command": "workbench.actions.view.problems",
         "when": "workbench.panel.markers.view.active"
     },
     {
-        "key": "capslock f",
+        "key": "` f",
         "command": "actions.find",
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "capslock z",
+        "key": "` z",
         "command": "workbench.action.toggleMaximizedPanel",
         "when": "terminalFocus || workbench.panel.output.active "
     },
     {
-        "key": "capslock c",
+        "key": "` c",
         "command": "workbench.action.closePanel"
     },
     {
-        "key": "capslock q",
+        "key": "` q",
         "command": "workbench.action.closeActiveEditor"
     },
     {
-        "key": "capslock shift+q",
+        "key": "` shift+q",
         "command": "workbench.action.closeAllEditors"
     },
     {
-        "key": "capslock z",
+        "key": "` z",
         "command": "workbench.action.toggleMaximizeEditorGroup",
         "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
     },
     {
-        "key": "capslock \\",
+        "key": "` \\",
         "command": "workbench.files.action.collapseExplorerFolders",
         "when": "explorerViewletFocus"
     },
@@ -85,24 +85,24 @@
         "args": "<A->",
     },
     {
-        "key": "capslock s",
+        "key": "` s",
         "command": "workbench.action.quickTextSearch"
     },
     {
-        "key": "capslock r",
+        "key": "` r",
         "command": "editor.action.startFindReplaceAction",
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "capslock shift+r",
+        "key": "` shift+r",
         "command": "workbench.action.replaceInFiles"
     },
     {
-        "key": "capslock shift+f",
+        "key": "` shift+f",
         "command": "workbench.action.findInFiles"
     },
     {
-        "key": "capslock f",
+        "key": "` f",
         "command": "filesExplorer.findInFolder",
         "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus"
     },
@@ -119,56 +119,56 @@
         "command": "editor.action.clipboardCutAction"
     },
     {
-        "key": "capslock ,",
+        "key": "` ,",
         "command": "workbench.action.focusLeftGroup",
         "when": "neovim.mode != insert"
     },
     {
-        "key": "capslock .",
+        "key": "` .",
         "command": "workbench.action.focusRightGroup",
         "when": "neovim.mode != 'insert'"
     },
     {
-        "key": "capslock n",
+        "key": "` n",
         "command": "editor.action.nextMatchFindAction",
         "when": "editorFocus && findInputFocussed"
     },
     {
-        "key": "capslock n",
+        "key": "` n",
         "command": "editor.action.nextMatchFindAction",
         "when": "editorFocus"
     },
     {
-        "key": "capslock shift+n",
+        "key": "` shift+n",
         "command": "editor.action.previousMatchFindAction",
         "when": "editorFocus && findInputFocussed"
     },
     {
-        "key": "capslock shift+n",
+        "key": "` shift+n",
         "command": "editor.action.previousMatchFindAction",
         "when": "editorFocus"
     },
     {
-        "key": "capslock v",
+        "key": "` v",
         "command": "workbench.action.splitEditorRight"
     },
     {
-        "key": "capslock b",
+        "key": "` b",
         "command": "cmake.build",
         "when": "cmake:enableFullFeatureSet && !cmake:hideBuildCommand"
     },
     {
-        "key": "capslock o",
+        "key": "` o",
         "command": "workbench.action.output.toggleOutput",
         "when": "workbench.panel.output.active"
     },
     {
-        "key": "capslock a",
+        "key": "` a",
         "command": "inlineChat.start",
         "when": "editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
     },
     {
-        "key": "capslock a",
+        "key": "` a",
         "command": "inlineChat2.start",
         "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && !inlineChatHasSession"
     },
@@ -178,18 +178,12 @@
         "when": "canNavigateBack"
     },
     {
-        "key": "ctrl+alt+-",
-        "command": "-workbench.action.navigateBack",
-        "when": "canNavigateBack"
-    },
-    {
         "key": "alt+right",
         "command": "workbench.action.navigateForward",
         "when": "canNavigateForward"
     },
-    {
-        "key": "ctrl+shift+-",
-        "command": "-workbench.action.navigateForward",
-        "when": "canNavigateForward"
+        "key": "` shift+b",
+        "command": "editor.debug.action.toggleBreakpoint",
+        "when": "debuggersAvailable && disassemblyViewFocus || debuggersAvailable && editorTextFocus"
     }
 ]
