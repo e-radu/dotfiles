@@ -11,6 +11,8 @@ fc-cache -f -v
 # install dependencies for yazi
 sudo nala install ffmpeg ffmpegthumbnailer jq poppler-utils fd-find ripgrep xclip -y
 sudo ln --symbolic $(which fdfind) /usr/local/bin/fd
+# input-remapper is needed to remap Caps Lock to KEY_GRAVE
+sudo nala install input-remapper -y
 
 # Remove previous tmux installation
 sudo nala remove tmux
