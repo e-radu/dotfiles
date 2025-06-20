@@ -34,7 +34,7 @@ fi
 nvim --version
 if [ ! $? -eq 0 ]; then
     echo "Installing neovim"
-   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
     sudo rm -rf /opt/nvim
     sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
     rm nvim-linux-x86_64.tar.gz
@@ -98,6 +98,14 @@ if [ ! $? -eq 0 ]; then
     gh extension install github/gh-copilot --force
 else
     echo "--> GitHub CLI already installed"
+fi
+
+atuin --version
+if [ ! $? -eq 0]; then
+    echo "Installing Atuin"
+    curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+else
+    echo "--> atuin already installed"
 fi
 
 chsh -s $(which zsh)

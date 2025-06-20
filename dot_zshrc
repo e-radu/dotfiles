@@ -108,3 +108,5 @@ export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
 # Include custom scripts which might be specifc to a machine
 [ -f ~/.custom.sh ] && source ~/.custom.sh
+
+[ -f ~/.atuin/bin/env ] && source ~/.atuin/bin/env

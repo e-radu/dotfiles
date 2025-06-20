@@ -10,6 +10,7 @@ chezmoi init --apply e-radu
 ```
 ```bash
 cd ~/.config
+```
 ```bash
 source setup.sh
 ```
