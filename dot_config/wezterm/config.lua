@@ -42,8 +42,8 @@ config.status_update_interval = 1000
 
 -- theme
 config.color_scheme = "Tokyo Night Storm"
-config.font = wezterm.font("JetBrains Mono NF", { weight = "Regular" })
-config.font_size = 14
+config.font = wezterm.font("Agave Nerd Font Mono", { weight = "Regular" })
+config.font_size = 18
 config.background = {
 	{
 		source = {
