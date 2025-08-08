@@ -38,32 +38,20 @@ config.use_fancy_tab_bar = false
 config.tab_max_width = 60
 config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
---- config.tab_and_split_indices_are_zero_based = true
 
 -- theme
-config.color_scheme = "Tokyo Night Storm"
+config.color_scheme = "Gruvbox Dark (Gogh)"
 config.font = wezterm.font("Agave Nerd Font Mono", { weight = "Regular" })
 config.font_size = 18
 config.background = {
 	{
 		source = {
-			File = wezterm.home_dir .. "/.config/wezterm/background.png",
-		},
-		hsb = {
-			brightness = 0.15,
-			saturation = 1.05,
-			hue = 1.0,
+			Color = "#282828",
 		},
 		width = "100%",
 		height = "100%",
-	},
-	{
-		source = {
-			Color = "#282c35",
-		},
-		width = "100%",
-		height = "100%",
-		opacity = 0.45,
+		-- opacity = 0.45,
+		opacity = 1.0,
 	},
 }
 
