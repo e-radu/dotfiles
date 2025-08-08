@@ -15,9 +15,11 @@ end)
 
 -- Spawn a new fullscreen window when wezterm starts
 wezterm.on("gui-startup", function(cmd)
-	local _, _, window = mux.spawn_window(cmd or {})
+	local _, pane, window = mux.spawn_window(cmd or {})
 	window:gui_window():maximize()
 	sm.restore_state(window:gui_window())
+	local gui_window = window:gui_window()
+	gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
 end)
 
 wezterm.on("update-right-status", function(window, _)
