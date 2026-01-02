@@ -1,46 +1,114 @@
 format = """
+[╭](fg:current_line)\
+$os\
 $username\
-$hostname\
 $directory\
-$git_branch\
-$git_state\
-$git_status\
-$cmd_duration\
-$line_break\
+$fill\
 $python\
-$character"""
+$c\
+$cmd_duration\
+$git_branch\
+$line_break\
+$character\
+"""
+
+palette = 'gruvbox'
+add_newline = true
+
+[palettes.gruvbox]
+foreground = '#ebddb2'
+background = '#3c3836'
+current_line = '#3c3836'
+primary = '#1E1F29'
+box = '#3c3836'
+blue	= '#6272A4'
+cyan = '#8BE9FD'
+green	= '#98971a'
+orange = '#fe8019'
+pink = '#FF79C6'
+purple = '#BD93F9'
+red	= '#FF5555'
+yellow = '#fabd2f'
+
+[os]
+format = '(fg:current_line)[](fg:orange)[$symbol ](fg:primary bg:orange)'
+disabled = false
+
+[username]
+format = '(fg:yellow bg:box)[ $user](fg:foreground bg:box)[](fg:box)'
+show_always = true
+
+[os.symbols]
+Alpine = ''
+Amazon = ''
+Android = ''
+Arch = ''
+CentOS = ''
+Debian = ''
+EndeavourOS = ''
+Fedora = ''
+FreeBSD = ''
+Garuda = ''
+Gentoo = ''
+Linux = ''
+Macos = ''
+Manjaro = ''
+Mariner = ''
+Mint = ''
+NetBSD = ''
+NixOS = ''
+OpenBSD = ''
+OpenCloudOS = ''
+openEuler = ''
+openSUSE = ''
+OracleLinux = '⊂⊃'
+Pop = ''
+Raspbian = ''
+Redhat = ''
+RedHatEnterprise = ''
+Solus = ''
+SUSE = ''
+Ubuntu = ''
+Unknown = ''
+Windows = ''
 
 [directory]
-style = "blue"
-
-[character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+format = '[─](fg:current_line)[](fg:yellow)[󰷏 ](fg:primary bg:yellow)[](fg:yellow bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+home_symbol = " ~/"
+truncation_symbol = ' '
+truncation_length = 2
+read_only = '󱧵 '
+read_only_style = ''
 
 [git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
-
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
-
-[cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $branch](fg:foreground bg:box)[](fg:box)'
+symbol = ''
+truncation_length = 16
+truncation_symbol = ''
 
 [python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $virtualenv](fg:foreground bg:box)[](fg:box)'
+symbol = ''
+
+[c]
+format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[](fg:blue bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+symbol = ''
+
+[fill]
+symbol = '─'
+style = 'fg:current_line'
+
+[cmd_duration]
+min_time = 500
+format = '[─](fg:current_line)[](fg:orange)[](fg:primary bg:orange)[](fg:orange bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
+
+[shell]
+format = '[─](fg:current_line)[](fg:blue)[](fg:primary bg:blue)[](fg:blue bg:box)[ $indicator](fg:foreground bg:box)[](fg:box)'
+unknown_indicator = 'sh'
+disabled = false
+
+[character]
+format = """
+[╰─$symbol](fg:current_line) """
+success_symbol = '[>](fg:bold white)'
+error_symbol = '[×](fg:bold red)'
