@@ -14,25 +14,6 @@ sudo ln --symbolic $(which fdfind) /usr/local/bin/fd
 # input-remapper is needed to remap Caps Lock to KEY_GRAVE
 sudo nala install input-remapper -y
 
-# Remove previous tmux installation
-sudo nala remove tmux
-tmux -V
-if [ ! $? -eq 0 ]; then
-    current_path=$(pwd)
-    mkdir -p ~/tmux_temp
-    cd ~/tmux_temp
-    wget https://github.com/tmux/tmux/releases/download/3.5a/tmux-3.5a.tar.gz
-    tar -zxf tmux-3.5a.tar.gz
-    cd tmux-3.5a
-    ./configure && make
-    sudo make install
-    cd $current_path
-    rm -rf ~/tmux_temp
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-else
-    echo "Tmux already installed"
-fi
-
 nvim --version
 if [ ! $? -eq 0 ]; then
     echo "Installing neovim"
@@ -82,24 +63,6 @@ if [ ! $? -eq 0 ]; then
     ~/.fzf/install
 else
     echo "--> fzf already installed"
-fi
-
-gh --version
-if [ ! $? -eq 0 ]; then
-    echo "Installing GitHub CLI"
-    (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) &&
-        sudo mkdir -p -m 755 /etc/apt/keyrings &&
-        out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg &&
-        cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null &&
-        sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg &&
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
-        sudo nala update &&
-        sudo nala install gh -y
-
-    gh auth login --web
-    gh extension install github/gh-copilot --force
-else
-    echo "--> GitHub CLI already installed"
 fi
 
 atuin --version
