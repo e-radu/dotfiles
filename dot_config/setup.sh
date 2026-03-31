@@ -66,7 +66,7 @@ else
 fi
 
 atuin --version
-if [ ! $? -eq 0]; then
+if [ ! $? -eq 0 ]; then
     echo "Installing Atuin"
     curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 else
