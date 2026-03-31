@@ -15,7 +15,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-zinit light loiccoyle/zsh-github-copilot
 
 # Add in snippets
 zinit snippet OMZP::git
@@ -28,13 +27,34 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # Keybindings
-#bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey '^[\' zsh_gh_copilot_suggest
-bindkey '^[|' zsh_gh_copilot_explain
-#bindkey '^[w' kill-region
 
+# Enable editing command line
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# Expands history expressions like !! or !$ when you press space
+bindkey ' ' magic-space
+
+# Clear screen but keep current command buffer
+function clear-screen-and-scrollback() {
+  echoti civis >"$TTY"
+  printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
+  echoti cnorm >"$TTY"
+  zle redisplay
+}
+zle -N clear-screen-and-scrollback
+bindkey '^L' clear-screen-and-scrollback
+
+# Copy current command buffer to clipboard (macOS)
+function copy-buffer-to-clipboard() {
+  echo -n "$BUFFER" | xclip -selection clipboard
+  zle -M "Copied to clipboard"
+}
+zle -N copy-buffer-to-clipboard
+bindkey '^C' copy-buffer-to-clipboard
 # History
 HISTSIZE=50000
 HISTFILE=~/.zsh_history
@@ -78,6 +98,31 @@ alias grep='grep --color=auto'
 alias cat='bat'
 alias lg='lazygit'
 alias xc='xclip -selection clipboard'
+
+alias -s mp4=vlc
+alias -s avi=vlc
+alias -s json=jless
+alias -s md=cat
+alias -s go='$EDITOR'
+alias -s rs='$EDITOR'
+alias -s txt=cat
+alias -s log=cat
+alias -s py='$EDITOR'
+
+# Redirect stderr to /dev/null
+alias -g NE='2>/dev/null'
+
+# Redirect stdout to /dev/null
+alias -g NO='>/dev/null'
+
+# Redirect both stdout and stderr to /dev/null
+alias -g NUL='>/dev/null 2>&1'
+
+# Pipe to jq
+alias -g J='| jq'
+
+# Copy output to clipboard (Linux with xclip)
+alias -g C='| xclip -selection clipboard'
 
 # Load local aliasses
 [ -f ~/.alias.zsh ] && source ~/.alias.zsh
