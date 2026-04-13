@@ -8,7 +8,7 @@ function check_and_install_tool {
     fi
 }
 
-cargoTools=("eza" "bat" "zoxide" "yazi-fm" "yazi-cli" "tlrc" "dysk")
+cargoTools=("eza" "bat" "zoxide" "tlrc" "dysk")
 
 for tool in "${cargoTools[@]}"; do
     check_and_install_tool $tool
