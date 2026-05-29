@@ -31,7 +31,11 @@ red	= '#FF5555'
 yellow = '#fabd2f'
 
 [os]
+{{- if eq .chezmoi.os "windows" }}
+format = '(fg:current_line)[](fg:blue)[$symbol ](fg:primary bg:blue)'
+{{- else }}
 format = '(fg:current_line)[](fg:orange)[$symbol ](fg:primary bg:orange)'
+{{- end }}
 disabled = false
 
 [username]
