@@ -1,0 +1,11 @@
+{{- if ne .chezmoi.os "windows" -}}
+dot_config/powershell/**
+dot_config/private_Code
+{{- end -}}
+{{- if eq .chezmoi.os "windows" -}}
+input_remapper_caps2grave.png
+dot_zshenv
+dot_zshrc
+dot_config/private_Code
+dot_config/*.sh
+{{- end -}}
