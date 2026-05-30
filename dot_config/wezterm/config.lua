@@ -101,7 +101,7 @@ config.hyperlink_rules = {
 -- key configs
 config.disable_default_key_bindings = true
 config.use_dead_keys = false
-config.leader = { key = "q", mods = "ALT", timeout_milliseconds = 2000 }
+config.leader = { key = "`", timeout_milliseconds = 2000 }
 config.keys = {
 	-- save/load/reload window layout
 	{ key = "S", mods = "LEADER", action = act({ EmitEvent = "save_state" }) },
