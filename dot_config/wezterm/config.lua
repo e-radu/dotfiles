@@ -18,7 +18,7 @@ config.default_cursor_style = "SteadyBar"
 -- window config
 config.enable_wayland = false
 config.window_close_confirmation = "NeverPrompt"
--- config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 config.adjust_window_size_when_changing_font_size = false
 config.window_padding = {
 	left = 0,

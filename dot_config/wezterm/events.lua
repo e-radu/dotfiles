@@ -18,7 +18,7 @@ wezterm.on("gui-startup", function(cmd)
 	local _, pane, window = mux.spawn_window(cmd or {})
 	window:gui_window():maximize()
 	local gui_window = window:gui_window()
-	gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
+	-- gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
 	sm.restore_state(window:gui_window())
 end)
 
