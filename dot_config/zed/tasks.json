@@ -1,0 +1,61 @@
+// Global Zed tasks for CMake with Presets support.
+//
+// These are fallback/generic tasks. For project-specific preset names,
+// create a .zed/tasks.json in your project root with tasks like:
+//   {"label": "CMake: Configure (debug)", "command": "cmake", "args": ["--preset", "debug"], ...}
+//
+// The $ZED_WORKTREE_ROOT variable is automatically resolved to the project root.
+// The $ZED_CUSTOM_PRESET variable is resolved from environment; if not set the
+// shell will prompt you (use_new_terminal: true ensures the terminal is interactive).
+[
+  // ─── Configure ──────────────────────────────────────────────────────────────
+  {
+    "label": "CMake: Configure",
+    "command": "bash",
+    "args": [
+      "-c",
+      "echo 'Available configure presets:' && cmake --list-presets=configure 2>/dev/null || echo '(none)'; printf 'Enter preset name: '; read -r preset; cmake --preset \"$preset\""
+    ],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
+  },
+  // ─── Build ──────────────────────────────────────────────────────────────────
+  {
+    "label": "CMake: Build",
+    "command": "bash",
+    "args": [
+      "-c",
+      "echo 'Available build presets:' && cmake --list-presets=build 2>/dev/null || echo '(none)'; printf 'Enter preset name: '; read -r preset; cmake --build --preset \"$preset\""
+    ],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
+  },
+  // ─── Re-run last build (fast, no prompt) ────────────────────────────────────
+  // Useful once you know which preset you want; set PRESET in your shell env.
+  {
+    "label": "CMake: Build (last preset / $CMAKE_BUILD_PRESET)",
+    "command": "cmake",
+    "args": ["--build", "--preset", "$CMAKE_BUILD_PRESET"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
+  },
+  // ─── Clean build ────────────────────────────────────────────────────────────
+  {
+    "label": "CMake: Build --clean-first",
+    "command": "bash",
+    "args": [
+      "-c",
+      "echo 'Available build presets:' && cmake --list-presets=build 2>/dev/null || echo '(none)'; printf 'Enter preset name: '; read -r preset; cmake --build --preset \"$preset\" --clean-first"
+    ],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
+  }
+]

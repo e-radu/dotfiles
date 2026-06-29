@@ -1,0 +1,178 @@
+{
+  // ─── AI ─────────────────────────────────────────────────────────────────────
+  // Disables all AI features: Agent Panel, Threads Sidebar, Inline Assistant,
+  // Edit Prediction, and Git commit generation.
+  "icon_theme": "Catppuccin Mocha",
+  "disable_ai": false,
+
+  // ─── Theme ──────────────────────────────────────────────────────────────────
+  "theme": {
+    "mode": "dark",
+    "dark": "Catppuccin Mocha",
+    "light": "Gruvbox",
+  },
+
+  // ─── Buffer Font ─────────────────────────────────────────────────────────────
+  // Primary family name as reported by fc-list. Only the Light (300) weight is
+  // installed (~/.fonts/JetBrainsMonoNerdFont-Light.ttf); weight is set to match.
+  // Install more weights from https://github.com/ryanoasis/nerd-fonts if needed.
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_size": 16,
+  "buffer_font_weight": 300,
+  // 22px line height / 16px font ≈ 1.375
+  "buffer_line_height": { "custom": 1.375 },
+  // Enable ligatures (calt = contextual alternates)
+  "buffer_font_features": { "calt": true },
+
+  // ─── UI Font ─────────────────────────────────────────────────────────────────
+  // Matches editor.suggestFontSize: 18
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_size": 18,
+
+  // ─── Vim Mode ────────────────────────────────────────────────────────────────
+  "vim_mode": true,
+  "vim": {
+    // Show relative numbers in normal/visual, absolute in insert — matches your setup
+    "toggle_relative_line_numbers": true,
+  },
+
+  // ─── Editor Behaviour ────────────────────────────────────────────────────────
+  "relative_line_numbers": "enabled",
+  "cursor_blink": true,
+  // Highlight only the gutter on current line (not full line), matching renderLineHighlight: "gutter"
+  "current_line_highlight": "gutter",
+  // No scrolling past the last line
+  "scroll_beyond_last_line": "off",
+  // Keep 10 lines of context above/below cursor (cursorSurroundingLines: 10)
+  "vertical_scroll_margin": 10,
+  // Thin scrollbar (Zed doesn't expose pixel width, but always-visible is closest to your 5px style)
+  "scrollbar": {
+    "show": "always",
+    "git_diff": true,
+    "search_results": true,
+    "diagnostics": "all",
+    "cursors": false,
+    "selected_symbol": false,
+  },
+  // Top padding matching editor.padding.top: 16
+  // "editor_padding": { "top": 16, "bottom": 0 },
+  // Word wrap at 120 columns
+  "soft_wrap": "preferred_line_length",
+  "preferred_line_length": 120,
+  "show_wrap_guides": true,
+  "wrap_guides": [120],
+  // Show indent guides
+  "indent_guides": { "enabled": true, "coloring": "indent_aware" },
+  // No sticky scroll headers
+  "auto_signature_help": true,
+  "hover_popover_enabled": true,
+  // Completions
+  "show_completions_on_input": true,
+  "show_completion_documentation": true,
+  // Snippets at the top of completions
+  "snippet_completions_in_text": true,
+  // Detect indentation from file content
+  "detect_indent": true,
+  // Inlay hints (useful for C++ type hints from clangd)
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+  },
+
+  // ─── File Saving ─────────────────────────────────────────────────────────────
+  "format_on_save": "on",
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
+
+  // ─── Git ─────────────────────────────────────────────────────────────────────
+  "git": {
+    // Inline blame decoration (git.blame.editorDecoration.enabled: true)
+    "inline_blame": {
+      "enabled": true,
+      // Delay before blame appears — matches editor.hover.delay: 1500
+      "delay_ms": 1500,
+    },
+    "git_gutter": "tracked_files",
+  },
+
+  // ─── Terminal ────────────────────────────────────────────────────────────────
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 16,
+    "blinking": "on",
+    "working_directory": "current_project_directory",
+  },
+
+  // ─── Panel Layout ────────────────────────────────────────────────────────────
+  // Sidebar on the right, matching workbench.sideBar.location: "right"
+  "project_panel": {
+    "dock": "right",
+    "indent_size": 10,
+    "file_icons": true,
+    "folder_icons": true,
+    "git_status": true,
+    "auto_reveal_entries": true,
+  },
+  // Put outline/symbol panel on the left (aux bar equivalent)
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+    // No full disable exists; setting button: false hides it from the status bar
+    "button": false,
+  },
+
+  // ─── Diff Editor ─────────────────────────────────────────────────────────────
+  // Match diffEditor.ignoreTrimWhitespace: false
+  "diff_base_gutter_width": 5,
+
+  // ─── Language-Specific ───────────────────────────────────────────────────────
+  "languages": {
+    "C++": {
+      "format_on_save": "on",
+      // Use clangd's built-in formatting (backed by clang-format), equivalent to xaver.clang-format
+      "formatter": { "language_server": { "name": "clangd" } },
+      // Enable tab completion for snippets
+      "tab_size": 4,
+    },
+    "C": {
+      "format_on_save": "on",
+      "formatter": { "language_server": { "name": "clangd" } },
+      "tab_size": 4,
+    },
+    "CMake": {
+      "tab_size": 2,
+    },
+  },
+
+  // ─── LSP ─────────────────────────────────────────────────────────────────────
+  "lsp": {
+    "clangd": {
+      // Arguments passed to the clangd binary
+      "initialization_options": {
+        // Index the whole project in the background for fast go-to-def
+        "clangdFileStatus": true,
+        // Fallback flags when no compile_commands.json is found
+        "fallbackFlags": ["-std=c++17"],
+      },
+      "binary": {
+        // Override path if clangd is not in $PATH
+        // "path": "/usr/bin/clangd",
+        "arguments": [
+          "--background-index",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--completion-style=detailed",
+          "--pch-storage=memory",
+          // Reads CMakePresets.json → compile_commands.json automatically
+          "--compile-commands-dir=${workspaceFolder}/build",
+        ],
+      },
+    },
+    // cmake-language-server for CMakeLists.txt and CMakePresets.json editing
+    "cmake": {},
+  },
+}

@@ -1,0 +1,139 @@
+// Zed keymap — mirrors your VSCode backtick-leader keybindings
+// Leader key: ` (backtick)
+//
+// Bindings are split by context:
+//   "Workspace"                     → works in editor, project panel, terminal, everywhere
+//   "Editor && vim_mode == normal"  → editor-specific actions (buffer search, AI, etc.)
+//
+// Terminal note: ` starts a chord in terminal too. If the second key is not
+// bound, Zed forwards both chars to the shell after a short timeout. Typing
+// a lone ` in the shell has a brief delay — the trade-off of keeping ` as leader.
+// If that bothers you, move the terminal-context bindings into a separate block:
+//   { "context": "Terminal", "bindings": { ... } }
+//
+// Vim note: ` in normal mode is "jump to exact mark position". These chords
+// shadow that operator for the keys you've bound. Use ' (single-quote) as a
+// fallback for line-level mark jumps.
+[
+  // ─── Workspace-level ─────────────────────────────────────────────────────────
+  // Fires from editor, project panel, terminal, search panel — anywhere.
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Panel toggles
+      "` e": "project_panel::ToggleFocus",
+      "` ]": "workspace::ToggleRightDock",
+      "` [": "workspace::ToggleLeftDock",
+      "` t": "terminal_panel::ToggleFocus",
+      "` shift-t": "workspace::NewTerminal",
+      "` d": "diagnostics::Deploy",
+      "` o": "workspace::ToggleBottomDock",
+      "` c": "workspace::ToggleBottomDock",
+      // Pane management
+      "` z": "workspace::ToggleZoom",
+      "` q": "pane::CloseActiveItem",
+      "` shift-q": "pane::CloseAllItems",
+      "` v": "pane::SplitRight",
+      "` ,": "workspace::ActivatePreviousPane",
+      "` .": "workspace::ActivateNextPane",
+      // Navigation
+      "alt-left": "pane::GoBack",
+      "alt-right": "pane::GoForward",
+      // Finders
+      "` l": "file_finder::Toggle",
+      "` k": "command_palette::Toggle",
+      "` s": "workspace::NewSearch",
+      "` shift-f": "workspace::NewSearch",
+      "` shift-r": ["workspace::NewSearch", { "replace_enabled": true }],
+      // CMake tasks
+      "` b": ["task::Spawn", { "task_name": "CMake: Build" }],
+      "` shift-p": ["task::Spawn", { "task_name": "CMake: Configure" }]
+    }
+  },
+
+  // ─── Editor — Vim Normal Mode ────────────────────────────────────────────────
+  // Editor-specific actions that need an active buffer.
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      // Find / replace in current file
+      "` f": "buffer_search::Deploy",
+      "` r": ["buffer_search::Deploy", { "replace_enabled": true }],
+      // Search match cycling
+      "` n": "search::SelectNextMatch",
+      "` shift-n": "search::SelectPreviousMatch",
+      // Debugging
+      "` shift-b": "editor::ToggleBreakpoint",
+      // Collapse project panel tree (only meaningful when panel is visible)
+      "` \\": "project_panel::CollapseAllEntries"
+    }
+  },
+
+  // ─── Editor — Vim Visual Mode ────────────────────────────────────────────────
+  {
+    "context": "Editor && vim_mode == visual && !menu",
+    "bindings": {
+      "` f": "buffer_search::Deploy"
+    }
+  },
+
+  // ─── Buffer Search Bar ───────────────────────────────────────────────────────
+  {
+    "context": "BufferSearchBar",
+    "bindings": {
+      "` n": "search::SelectNextMatch",
+      "` shift-n": "search::SelectPreviousMatch"
+    }
+  },
+
+  // ─── Clipboard (works everywhere, useful in vim mode) ────────────────────────
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-c": "editor::Copy",
+      "ctrl-shift-v": "editor::Paste",
+      "ctrl-shift-x": "editor::Cut"
+    }
+  },
+
+  // ─── mini.ai — text objects for any quote / any bracket ──────────────────────
+  // These fire when vim is waiting for a text object (after d/c/y/v + i or a,
+  // or after cs for change-surround).
+  //
+  // q / Q  →  quotes  (' " `)
+  //   q uses AnyQuotes  (traditional vim: innermost match, line fallback)
+  //   Q uses MiniQuotes (mini.ai:          current-line first, Tree-sitter aware)
+  //
+  // b / B  →  brackets  (() [] {} <>)
+  //   b uses AnyBrackets  (traditional vim)
+  //   B uses MiniBrackets (mini.ai / Tree-sitter aware)
+  //
+  // Examples:
+  //   diq  → delete inside nearest quotes (traditional)
+  //   diQ  → delete inside nearest quotes (mini.ai)
+  //   ciB  → change inside brackets       (mini.ai)
+  //   csq" → change surrounding quote to double-quote
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      "q": "vim::AnyQuotes",
+      "Q": "vim::MiniQuotes",
+      "b": "vim::AnyBrackets",
+      "B": "vim::MiniBrackets"
+    }
+  },
+
+  // ─── mini.surround — visual mode surround ────────────────────────────────────
+  // In normal mode ys/cs/ds already work out of the box.
+  // This adds S in visual mode to wrap the selection (like mini.surround's
+  // visual mapping). By default shift-s substitutes the selection; this
+  // overrides that in visual mode only.
+  //
+  // Usage: select text → S → type a delimiter  (e.g. S" or S( )
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-s": "vim::PushAddSurrounds"
+    }
+  }
+]
